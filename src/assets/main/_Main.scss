@@ -1,0 +1,175 @@
+@import "MainScroll";
+.main-sec {
+      & > h2 {
+            cursor: pointer;
+            position: relative;
+            &::after {
+                  transition: all 500ms;
+                  content: "";
+                  width: 0;
+                  height: 3px;
+                  background: #6d9886;
+                  position: absolute;
+                  bottom: -10px;
+                  left: 50%;
+                  transform: translateX(-50%);
+            }
+            &:hover {
+                  &::after {
+                        width: 100px;
+                  }
+            }
+      }
+}
+
+::root {
+      --p: 0;
+}
+
+.pie {
+      --p: 20;
+      --b: 22px;
+      --c: darkred;
+      --w: 150px;
+
+      width: var(--w);
+      aspect-ratio: 1;
+      position: relative;
+      display: inline-grid;
+      margin: 5px;
+      place-content: center;
+      font-size: 25px;
+      font-weight: bold;
+      font-family: sans-serif;
+}
+.pie:before,
+.pie:after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+}
+.pie:before {
+      inset: 0;
+      background: radial-gradient(farthest-side, var(--c) 98%, #0000) top/var(--b) var(--b) no-repeat,
+            conic-gradient(var(--c) calc(var(--p) * 1%), #0000 0);
+      -webkit-mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+      mask: radial-gradient(farthest-side, #0000 calc(99% - var(--b)), #000 calc(100% - var(--b)));
+}
+.pie:after {
+      inset: calc(50% - var(--b) / 2);
+      background: var(--c);
+      transform: rotate(calc(var(--p) * 3.6deg)) translateY(calc(50% - var(--w) / 2));
+}
+.animate {
+      animation: p 1s 0.5s both;
+}
+.no-round:before {
+      background-size: 0 0, auto;
+}
+.no-round:after {
+      content: none;
+}
+@keyframes p {
+      from {
+            --p: 0;
+      }
+}
+body {
+      background: #ddd;
+}
+
+.main-form {
+      margin-top: 100px !important;
+      & form {
+            max-width: 550px;
+      }
+      & input,
+      button {
+            background: transparent;
+            z-index: 1;
+            outline: none;
+      }
+
+      & button {
+            position: relative;
+            border: none;
+            width: fit-content;
+            border-radius: 8px;
+            background: hsla(225, 40%, 54%, 1);
+            background: linear-gradient(90deg, hsla(225, 40%, 54%, 1) 0%, hsla(284, 75%, 54%, 1) 100%);
+            background: -moz-linear-gradient(90deg, hsla(225, 40%, 54%, 1) 0%, hsla(284, 75%, 54%, 1) 100%);
+            background: -webkit-linear-gradient(90deg, hsla(225, 40%, 54%, 1) 0%, hsla(284, 75%, 54%, 1) 100%);
+            color: #fff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            &::before  {
+                  position: absolute;
+                  transition: all 0.4s;
+                  content: "";
+                  width: 95%;
+                  height: 95%;
+                  background: #000;
+                  border-radius: 16px;
+                  z-index: -1;
+                  left: 50%;
+                  top: 50%;
+                  transform: translateX(-50%) translateY(-50%);
+            }
+            &:hover {
+                  padding-inline: 50px !important;
+                  // &::before {
+                  //       width: 0;
+                  // }
+            }
+      }
+
+      & label {
+            pointer-events: none;
+      }
+
+      & input[type="number"]::-webkit-inner-spin-button,
+      & input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+      }
+
+      & input[type="number"] {
+            -moz-appearance: textfield;
+      }
+
+      &-item {
+            width: 400px;
+            &::after {
+                  content: "";
+                  position: absolute;
+                  display: block;
+                  width: 100%;
+                  height: 3px;
+            }
+
+            &::after {
+                  z-index: -1;
+                  transition: all 0.5s ease;
+                  height: 3px;
+                  background: var(--bg);
+                  bottom: 0;
+            }
+      }
+}
+
+.input-style {
+      margin-top: 1.3rem;
+
+      & input {
+            color: white;
+      }
+
+      &::after {
+            height: 100%;
+      }
+
+      & label {
+            transform: translateY(-33px);
+      }
+}

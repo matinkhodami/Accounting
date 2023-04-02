@@ -1,0 +1,25 @@
+@import 'Nav' ;
+@import 'Head' ;
+@import 'homeCards' ;
+@import './main/Main' ;
+@import 'Footer' ;
+@font-face {
+      font-family: 'Iran';
+      src: url(./Font/IRANSansWeb.ttf);
+}
+:root {
+      --font : 'Iran'; 
+      // palette
+      --bg : #5e6472 ;
+      --color:#0fa3b1;
+      --bg-sec : #aed9e0 ;
+      --colorSec : #b8f2e6 ;
+      --colorThird : #faf3dd ;
+}
+* {
+      font-family: var(--font);
+      transition: all 500ms;
+}
+body {
+      background: var(--colorThird) !important;
+}
